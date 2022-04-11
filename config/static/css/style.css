@@ -1,0 +1,230 @@
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+#container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 418px;
+  height: 739px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 23px;
+}
+
+#header {
+  width: 100%;
+  height: 108px;
+  background: #ff7063;
+  border-radius: 5px 5px 0 0;
+  font-weight: 500;
+  font-size: 20px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /*margin-bottom: ;*/
+}
+
+#header > div:nth-child(1) {
+  margin-bottom: 10px;
+}
+
+.btn_container {
+  text-align: center;
+  /*background: gray;*/
+  padding: 10px 0;
+}
+
+.btn_container button {
+  margin: 0 10px;
+
+  position: relative;
+  border: none;
+
+  transition: all 0.5s;
+  outline: none;
+}
+.btn_container button a {
+  font-size: 25px;
+  font-weight: 700;
+  color: #cecece;
+  display: block;
+}
+
+.btn_container button a:after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: #6c6c6c;
+  border-radius: 50%;
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  margin-top: -2.5px;
+  transition: all 0.2s ease-in-out;
+  transform: translateX(-10px);
+  opacity: 0;
+}
+
+.btn_container button a.active {
+  color: #6c6c6c;
+}
+
+.btn_container button a.active:after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.btn_container a {
+  text-decoration: none;
+}
+
+/*------------------------------컨텐츠가 없을때*/
+.empty_area {
+  width: 340px;
+  height: 460px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.22);
+  margin: 40px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.empty_area > p {
+  color: #e8e8e8;
+  font-weight: 600;
+  line-height: 40px;
+}
+
+/*------------------------------컨텐츠가 있을때*/
+
+#over_container {
+  /*width: 340px;*/
+  padding: 0 30px;
+  height: 450px;
+  /*background: #ddd;*/
+  margin: 40px auto 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#over_container .scroll_inner > article {
+  height: 70px;
+  /*background: red;*/
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.22);
+  margin-bottom: 15px;
+  position: relative;
+  padding: 10px;
+}
+
+#over_container .scroll_inner > article > span {
+  display: block;
+}
+
+#over_container .scroll_inner > article .line {
+  width: 30px;
+  height: 2px;
+  background: #8e8e8e;
+  margin: 10px 0;
+}
+
+.site_name {
+  color: #4b4b4b;
+  font-size: 18px;
+  font-weight: 700;
+  padding-top: 10px;
+}
+
+.site_url a {
+  font-size: 12px;
+  color: #7499ff;
+  text-decoration: none;
+}
+
+.site_url a:hover {
+  text-decoration: underline;
+}
+
+.form_container {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.form_container > * {
+  display: block;
+  width: 47px;
+  height: 15px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.form_container > a {
+  font-size: 11px;
+  color: #fff;
+  text-decoration: none;
+  background: #b7b7b7;
+  margin-bottom: 10px;
+  line-height: 15px;
+}
+
+.form_container input {
+  font-size: 11px;
+  color: #fff;
+  background: #ff9595;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+/*--------------------------------수정페이지*/
+
+#edit_container {
+  width: 341px;
+  height: 130px;
+  /*background: #ddd;*/
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#edit_container > form > p {
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.22);
+  margin-bottom: 15px;
+  height: 40px;
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+}
+
+#edit_container > form > p > label {
+  /*justify-self: flex-start;*/
+  width: 70px;
+  margin-left: 10px;
+}
+
+#edit_container > form > p > input {
+  width: 240px;
+  height: 24px;
+}
+
+#edit_container .create {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -30px;
+  font-size: 15px;
+  color: #fff;
+  width: 66px;
+  height: 21px;
+  background: #ff7063;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
