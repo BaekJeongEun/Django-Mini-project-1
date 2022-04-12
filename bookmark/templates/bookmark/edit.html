@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+<!--이 부분은 config > templates > layout.html의 head 부분에 들어감-->
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/reset.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block head %}
+<section id="container">
+    <header id="header">
+        <div><img src="{% static 'img/bookmark.png' %}" alt="북마크아이콘"></div>
+        <div>BOOK-MARK</div>
+    </header>
+
+    <section class="btn_container">
+        <button class="home"><a href="{% url 'bookmark:list' %}" class="home">HOME</a></button>
+        <button class="create active"><a href="{% url 'bookmark:new' %}" class="create active">CREATE</a></button>
+    </section>
+
+
+    <section id="edit_container">
+        <form action="" method="post" enctype="multipart/form-data">
+            <!--****장고의 보안을 담당****-->
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="create" type="submit" value="수정">
+            
+        </form>
+
+    </section>
+
+</section>
+
+{% endblock %}

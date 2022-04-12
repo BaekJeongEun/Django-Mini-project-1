@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+<!--이 부분은 config > templates > layout.html의 head 부분에 들어감-->
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/reset.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<section id="container">
+    <header id="header">
+        <div><img src="{% static 'img/bookmark.png' %}" alt="북마크아이콘"></div>
+        <div>BOOK-MARK</div>
+    </header>
+
+    <section class="btn_container">
+        <button class=""><a href="{% url 'bookmark:list' %}" class="active home">HOME</a></button>
+        <button class=""><a href="{% url 'bookmark:new' %}" class="create">CREATE</a></button>
+    </section>
+
+
+<!--        <div class="empty_area">-->
+<!--            <p>-->
+<!--                북마크 항목이 비어있습니다. <br>-->
+<!--                create를 눌러 새 북마크를 생성해보세요.-->
+<!--            </p>-->
+<!--        </div>-->
+
+
+
+    {% if list %}
+    <section id="over_container">
+        <div class="scroll_inner">
+
+            <!--config > views.py에서 list(request)함수에서 list라는 이름으로 list를 보내옴 -->
+
+            {% for bookmark_list in list %}
+            <article class="list01">
+                <span class="site_name">{{ bookmark_list.site_name }}</span>
+                <span class="line"></span>
+                <span class="site_url"><a href="#">{{ bookmark_list.url }}</a></span>
+
+                <div class="form_container">
+
+                    <!--edit할 땐 pk 값을 보내야 함!-->
+                    <a href="{% url 'bookmark:edit' bookmark_list.id %}">edit</a>
+                    <!--delete할 땐 pk 값과 요청 방식 POST 보내야 함!-->
+                    <form action="{% url 'bookmark:delete' bookmark_list.id %}" method="post">
+                        
+                        <!--****장고의 보안을 담당****-->
+                        {% csrf_token %}
+                        <input type="submit" value="delete">
+                    </form>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+    </section>
+
+    {% else %}
+    <div>
+        <div class="empty_area">
+            <p>
+                북마크 항목이 비어있습니다.<br>
+                create를 눌러 새 북마크를 생성해보세요.
+            </p>
+        </div>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}
